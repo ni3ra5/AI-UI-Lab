@@ -75,11 +75,25 @@
 
 .navItem:hover {
   background: var(--sidebar-hover-background);
+  color: var(--color-text-primary);
 }
 
 .navItem.active {
   background: var(--sidebar-active-background);
   color: var(--sidebar-active-color);
+  font-weight: 600;
+  position: relative;
+}
+
+.navItem.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: var(--spacing-1);
+  bottom: var(--spacing-1);
+  width: 3px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
 }
 
 .navIcon {
@@ -93,6 +107,57 @@
 
 .navLabel {
   overflow: hidden;
+}
+
+/* Account section */
+.account {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-top: 1px solid var(--color-border-light);
+  flex-shrink: 0;
+}
+
+.accountAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.accountInitials {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-inverse);
+}
+
+.accountInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.accountName {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.accountEmail {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 768px) {

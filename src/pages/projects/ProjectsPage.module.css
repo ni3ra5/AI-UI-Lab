@@ -25,9 +25,11 @@
 
 .viewToggle {
   display: flex;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  gap: var(--spacing-0-5);
+  background: var(--color-surface-alt);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-0-5);
 }
 
 .viewBtn {
@@ -35,20 +37,25 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-1-5) var(--spacing-2-5);
-  background: var(--color-surface);
+  background: transparent;
   color: var(--color-text-muted);
   border: none;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background var(--duration-fast) var(--easing-standard);
+  transition:
+    background var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard),
+    box-shadow var(--duration-fast) var(--easing-standard);
 }
 
 .viewBtn:hover {
-  background: var(--color-surface-alt);
+  color: var(--color-text-primary);
 }
 
 .viewBtn.activeView {
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .filters {

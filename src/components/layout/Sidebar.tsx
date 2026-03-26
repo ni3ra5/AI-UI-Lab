@@ -94,6 +94,18 @@ export function Sidebar() {
           </NavLink>
         ))}
       </nav>
+
+      <div className={styles.account}>
+        <div className={styles.accountAvatar}>
+          <span className={styles.accountInitials}>JD</span>
+        </div>
+        {!collapsed && (
+          <div className={styles.accountInfo}>
+            <span className={styles.accountName}>Jane Doe</span>
+            <span className={styles.accountEmail}>jane@example.com</span>
+          </div>
+        )}
+      </div>
     </aside>
   );
 }
