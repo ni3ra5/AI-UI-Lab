@@ -63,8 +63,17 @@ function FlyTo({ lat, lng }: { lat: number; lng: number }) {
   return null;
 }
 
+function isDarkTheme(bgColor: string): boolean {
+  const hex = bgColor.replace('#', '');
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 < 128;
+}
+
 export function MapPage() {
   const { theme } = useTheme();
+  const dark = isDarkTheme(theme.colors.background.value);
   const [selected, setSelected] = useState<Location | null>(null);
   const [flyTarget, setFlyTarget] = useState<{ lat: number; lng: number } | null>(null);
   const markerRefs = useRef<Record<string, L.Marker>>({});
@@ -103,17 +112,25 @@ export function MapPage() {
         <MapContainer
           center={[30, 0]}
           zoom={2}
+          minZoom={2}
           style={{ height: '100%', width: '100%' }}
           scrollWheelZoom
         >
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution={dark
+              ? '&copy; <a href="https://carto.com/">CARTO</a>'
+              : '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }
+            url={dark
+              ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+              : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            }
+            key={`tile-${theme.id}`}
           />
           {flyTarget && <FlyTo lat={flyTarget.lat} lng={flyTarget.lng} />}
           <MarkerClusterGroup
             iconCreateFunction={createClusterIcon}
-            key={theme.id}
+            key={`cluster-${theme.id}`}
           >
             {mockLocations.map((loc) => (
               <Marker

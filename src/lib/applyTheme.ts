@@ -76,6 +76,17 @@ export function applyTheme(theme: Theme): void {
     root.style.setProperty(`--easing-${kebab(key)}`, entry.value);
   }
 
+  // Structure
+  if (theme.structure) {
+    root.style.setProperty('--bg-texture', theme.structure.backgroundTexture ?? 'none');
+    root.style.setProperty('--section-gap', theme.structure.sectionGap ?? '0px');
+    root.style.setProperty('--content-radius', theme.structure.contentRadius ?? '0px');
+  } else {
+    root.style.setProperty('--bg-texture', 'none');
+    root.style.setProperty('--section-gap', '0px');
+    root.style.setProperty('--content-radius', '0px');
+  }
+
   // Component tokens
   applyComponentTokens(theme.components, root);
 }

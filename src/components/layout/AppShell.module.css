@@ -1,9 +1,14 @@
 .shell {
   min-height: 100vh;
+  --active-sidebar-width: var(--layout-sidebar-width);
+}
+
+.shell.collapsed {
+  --active-sidebar-width: var(--layout-sidebar-collapsed-width);
 }
 
 .main {
-  margin-left: var(--layout-sidebar-width);
+  margin-left: var(--active-sidebar-width);
   margin-top: var(--layout-top-nav-height);
   padding: var(--layout-page-padding);
   min-height: calc(100vh - var(--layout-top-nav-height));
@@ -11,7 +16,7 @@
 }
 
 @media (max-width: 768px) {
-  .main {
-    margin-left: var(--layout-sidebar-collapsed-width);
+  .shell {
+    --active-sidebar-width: var(--layout-sidebar-collapsed-width);
   }
 }

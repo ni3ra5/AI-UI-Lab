@@ -11,10 +11,26 @@
     transform var(--duration-normal) var(--easing-standard);
 }
 
-.card:hover {
+/* Hover: lift (default) */
+.card.lift:hover {
   box-shadow: var(--shadow-md);
   border-color: var(--color-border);
   transform: translateY(-1px);
+}
+
+/* Hover: glow */
+.card.glow:hover {
+  box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-md);
+}
+
+/* Hover: border */
+.card.border:hover {
+  border-color: var(--color-primary);
+}
+
+/* Hover: none */
+.card.none:hover {
+  /* no hover effect */
 }
 
 .noPadding {
