@@ -1,0 +1,17 @@
+.shell {
+  min-height: 100vh;
+}
+
+.main {
+  margin-left: var(--layout-sidebar-width);
+  margin-top: var(--layout-top-nav-height);
+  padding: var(--layout-page-padding);
+  min-height: calc(100vh - var(--layout-top-nav-height));
+  transition: margin-left var(--duration-normal) var(--easing-standard);
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-left: var(--layout-sidebar-collapsed-width);
+  }
+}
