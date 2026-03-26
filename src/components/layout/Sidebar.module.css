@@ -1,0 +1,107 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--layout-sidebar-width);
+  background: var(--sidebar-background);
+  border-right: var(--sidebar-border-right);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: width var(--duration-normal) var(--easing-standard);
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: var(--layout-sidebar-collapsed-width);
+}
+
+.logo {
+  height: var(--layout-top-nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-4);
+  border-bottom: var(--sidebar-border-right);
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.collapseBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  color: var(--sidebar-color);
+  transition: background var(--duration-fast) var(--easing-standard);
+}
+
+.collapseBtn:hover {
+  background: var(--sidebar-hover-background);
+}
+
+.nav {
+  flex: 1;
+  padding: var(--spacing-3) var(--spacing-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  overflow-y: auto;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  color: var(--sidebar-color);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background var(--duration-fast) var(--easing-standard),
+              color var(--duration-fast) var(--easing-standard);
+}
+
+.navItem:hover {
+  background: var(--sidebar-hover-background);
+}
+
+.navItem.active {
+  background: var(--sidebar-active-background);
+  color: var(--sidebar-active-color);
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.navLabel {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: var(--layout-sidebar-collapsed-width);
+  }
+
+  .logoText,
+  .navLabel {
+    display: none;
+  }
+}

@@ -1,0 +1,89 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard),
+    border-color var(--duration-fast) var(--easing-standard);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Variants */
+.primary {
+  background: var(--button-primary-background);
+  color: var(--button-primary-color);
+  border: var(--button-primary-border);
+  border-radius: var(--button-primary-border-radius);
+}
+.primary:hover:not(:disabled) {
+  background: var(--button-primary-hover-background);
+  color: var(--button-primary-hover-color);
+}
+.primary:active:not(:disabled) {
+  background: var(--button-primary-active-background);
+}
+
+.secondary {
+  background: var(--button-secondary-background);
+  color: var(--button-secondary-color);
+  border: var(--button-secondary-border);
+  border-radius: var(--button-secondary-border-radius);
+}
+.secondary:hover:not(:disabled) {
+  background: var(--button-secondary-hover-background);
+  color: var(--button-secondary-hover-color);
+}
+.secondary:active:not(:disabled) {
+  background: var(--button-secondary-active-background);
+}
+
+.ghost {
+  background: var(--button-ghost-background);
+  color: var(--button-ghost-color);
+  border: var(--button-ghost-border);
+  border-radius: var(--button-ghost-border-radius);
+}
+.ghost:hover:not(:disabled) {
+  background: var(--button-ghost-hover-background);
+  color: var(--button-ghost-hover-color);
+}
+.ghost:active:not(:disabled) {
+  background: var(--button-ghost-active-background);
+}
+
+.danger {
+  background: var(--button-danger-background);
+  color: var(--button-danger-color);
+  border: var(--button-danger-border);
+  border-radius: var(--button-danger-border-radius);
+}
+.danger:hover:not(:disabled) {
+  background: var(--button-danger-hover-background);
+  color: var(--button-danger-hover-color);
+}
+.danger:active:not(:disabled) {
+  background: var(--button-danger-active-background);
+}
+
+/* Sizes */
+.sm {
+  padding: var(--spacing-1-5) var(--spacing-3);
+  font-size: var(--font-size-sm);
+}
+.md {
+  padding: var(--spacing-2-5) var(--spacing-5);
+  font-size: var(--font-size-base);
+}
+.lg {
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--font-size-lg);
+}
