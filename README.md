@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# AI/UI Lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A theme playground for previewing and evaluating UI themes across realistic pages. Designers and developers can instantly see how a theme behaves across diverse interface patterns — dashboards, data tables, maps, and card grids.
 
-Currently, two official plugins are available:
+## Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Themes are authored externally (in code, with AI assistance) and registered into the system. The app **manages and applies** themes — it does not create or generate them. Every visual decision flows through theme tokens, so switching themes is instant and consistent.
 
-## React Compiler
+## Adding a Theme
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Drop a `.ts` file in `src/themes/` that exports a `Theme` object. It auto-appears in the theme switcher — no config changes needed.
 
-## Expanding the ESLint configuration
+Each theme is a self-describing spec with:
+- **Colors** — primary, secondary, accent, semantic, text (with roles, usage, contrast hints, and shade scales)
+- **Typography** — font families, weights, and a type scale
+- **Spacing** — base unit and scale (`0.5`–`20`)
+- **Radius** — sm through full, with usage descriptions
+- **Shadows** — sm, md, lg, xl
+- **Motion** — duration and easing tokens
+- **Component overrides** — per-component token customization
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Pages
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Page | What it tests |
+|------|---------------|
+| **Dashboard** | KPI cards, line/bar charts, activity feed |
+| **Users** | Data table with sorting, pagination, avatars |
+| **Projects** | Card grid + table view toggle, progress bars, tags |
+| **Map** | Leaflet map with sidebar list, popups, markers |
+| **Themes** | Live token inspector — colors, typography, spacing, radius |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **React 19** + TypeScript
+- **Vite** for dev/build
+- **CSS Modules** — no Tailwind, no utility classes
+- **Recharts** for charts
+- **Leaflet** for maps
+- No third-party component library — all components built from scratch for full theme control
+
+## Architecture
+
+```
+src/
+  themes/          # Theme definitions (drop-in .ts files)
+  types/theme.ts   # Theme type contract
+  lib/applyTheme.ts # CSS variable injection on :root
+  context/         # ThemeContext + provider
+  components/
+    ui/            # Button, Card, Input, Select, Badge, Avatar, ProgressBar
+    layout/        # AppShell, Sidebar, TopNav, ThemeSwitcher
+  pages/           # Dashboard, Users, Projects, Map, Themes
+  data/            # Mock data for all pages
+  styles/          # Reset + global styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+All UI references CSS variables (`var(--color-primary)`, `var(--spacing-4)`, etc.) — never hardcoded values. Theme switching works by replacing CSS custom properties on `:root`, persisted via `localStorage`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
+
+## Out of Scope
+
+Theme editor GUI, theme export, authentication, dark/light mode toggle, theme validation/linting.
