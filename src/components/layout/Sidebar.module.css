@@ -75,11 +75,25 @@
 
 .navItem:hover {
   background: var(--sidebar-hover-background);
+  color: var(--color-text-primary);
 }
 
 .navItem.active {
   background: var(--sidebar-active-background);
   color: var(--sidebar-active-color);
+  font-weight: 600;
+  position: relative;
+}
+
+.navItem.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: var(--spacing-1);
+  bottom: var(--spacing-1);
+  width: 3px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
 }
 
 .navIcon {

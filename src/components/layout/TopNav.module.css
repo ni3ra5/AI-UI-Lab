@@ -4,8 +4,10 @@
   left: var(--layout-sidebar-width);
   right: 0;
   height: var(--layout-top-nav-height);
-  background: var(--top-nav-background);
-  border-bottom: var(--top-nav-border-bottom);
+  background: color-mix(in srgb, var(--top-nav-background) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
   box-shadow: var(--top-nav-shadow);
   display: flex;
   align-items: center;

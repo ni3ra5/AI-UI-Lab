@@ -7,7 +7,14 @@
   transition:
     background var(--duration-normal) var(--easing-standard),
     border-color var(--duration-normal) var(--easing-standard),
-    box-shadow var(--duration-normal) var(--easing-standard);
+    box-shadow var(--duration-normal) var(--easing-standard),
+    transform var(--duration-normal) var(--easing-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border);
+  transform: translateY(-1px);
 }
 
 .noPadding {

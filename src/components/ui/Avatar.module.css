@@ -7,6 +7,8 @@
   color: var(--color-text-inverse);
   overflow: hidden;
   flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 3px var(--color-border-light);
+  transition: box-shadow var(--duration-fast) var(--easing-standard);
 }
 
 .sm {
