@@ -6,6 +6,7 @@ import { UsersPage } from '@/pages/users/UsersPage';
 import { ProjectsPage } from '@/pages/projects/ProjectsPage';
 import { MapPage } from '@/pages/map/MapPage';
 import { ThemesPage } from '@/pages/themes/ThemesPage';
+import { ThemeDetailPage } from '@/pages/themes/ThemeDetailPage';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/map" element={<MapPage />} />
             <Route path="/themes" element={<ThemesPage />} />
+            <Route path="/themes/:id" element={<ThemeDetailPage />} />
           </Route>
         </Routes>
       </ThemeProvider>

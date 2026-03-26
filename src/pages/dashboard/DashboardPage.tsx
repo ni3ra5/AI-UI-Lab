@@ -31,14 +31,14 @@ export function DashboardPage() {
       <div className={styles.chartsRow}>
         <Card className={styles.chartCard}>
           <h3 className={styles.cardTitle}>Revenue Trend</h3>
-          <ResponsiveContainer width="100%" height={280}>
-            <LineChart data={timeSeriesData}>
-              <CartesianGrid strokeDasharray="3 3" stroke={colors.border} />
-              <XAxis dataKey="month" stroke={colors.textMuted} fontSize={12} />
-              <YAxis stroke={colors.textMuted} fontSize={12} tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`} />
+          <ResponsiveContainer width="100%" height={240}>
+            <LineChart data={timeSeriesData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke={colors.border} vertical={false} />
+              <XAxis dataKey="month" stroke={colors.textMuted} fontSize={11} tickLine={false} axisLine={false} />
+              <YAxis stroke={colors.textMuted} fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`} width={45} />
               <Tooltip
-                contentStyle={{ background: colors.surface, border: `1px solid ${colors.border}`, borderRadius: '8px' }}
-                labelStyle={{ color: colors.text }}
+                contentStyle={{ background: colors.surface, border: `1px solid ${colors.border}`, borderRadius: '8px', fontSize: '13px' }}
+                labelStyle={{ color: colors.text, fontWeight: 600 }}
               />
               <Line type="monotone" dataKey="revenue" stroke={colors.primary} strokeWidth={2} dot={false} />
             </LineChart>
@@ -47,14 +47,15 @@ export function DashboardPage() {
 
         <Card className={styles.chartCard}>
           <h3 className={styles.cardTitle}>Projects by Department</h3>
-          <ResponsiveContainer width="100%" height={280}>
-            <BarChart data={categoryData}>
-              <CartesianGrid strokeDasharray="3 3" stroke={colors.border} />
-              <XAxis dataKey="name" stroke={colors.textMuted} fontSize={12} />
-              <YAxis stroke={colors.textMuted} fontSize={12} />
+          <ResponsiveContainer width="100%" height={240}>
+            <BarChart data={categoryData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke={colors.border} vertical={false} />
+              <XAxis dataKey="name" stroke={colors.textMuted} fontSize={11} tickLine={false} axisLine={false} />
+              <YAxis stroke={colors.textMuted} fontSize={11} tickLine={false} axisLine={false} width={30} />
               <Tooltip
-                contentStyle={{ background: colors.surface, border: `1px solid ${colors.border}`, borderRadius: '8px' }}
-                labelStyle={{ color: colors.text }}
+                contentStyle={{ background: colors.surface, border: `1px solid ${colors.border}`, borderRadius: '8px', fontSize: '13px' }}
+                labelStyle={{ color: colors.text, fontWeight: 600 }}
+                cursor={{ fill: 'transparent' }}
               />
               <Bar dataKey="projects" fill={colors.primary} radius={[4, 4, 0, 0]} />
             </BarChart>

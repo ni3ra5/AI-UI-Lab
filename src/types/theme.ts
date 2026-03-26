@@ -150,6 +150,7 @@ export interface ThemeComponents {
     borderRadius: string;
     shadow: string;
     padding: string;
+    hoverEffect?: 'lift' | 'glow' | 'border' | 'none';
   };
   badge: {
     borderRadius: string;
@@ -162,8 +163,12 @@ export interface ThemeComponents {
     color: string;
     activeBackground: string;
     activeColor: string;
+    activeBorder?: string;
+    activeStyle?: 'filled' | 'outlined' | 'indicator';
     hoverBackground: string;
     borderRight: string;
+    navItemRadius?: string;
+    navGap?: string;
   };
   topNav: {
     background: string;
@@ -238,6 +243,12 @@ export interface Theme {
       error: ThemeColor;
       info: ThemeColor;
     };
+  };
+
+  structure?: {
+    backgroundTexture?: string;
+    sectionGap?: string;
+    contentRadius?: string;
   };
 
   typography: ThemeTypography;

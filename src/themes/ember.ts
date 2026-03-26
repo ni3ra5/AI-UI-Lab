@@ -10,6 +10,12 @@ export const emberTheme: Theme = {
   personality: ['dark', 'luxurious', 'warm', 'editorial'],
   useCases: ['Data dashboards', 'Analytics platforms', 'Creative tools', 'Premium apps'],
 
+  structure: {
+    backgroundTexture: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.03\'/%3E%3C/svg%3E")',
+    sectionGap: '32px',
+    contentRadius: '16px',
+  },
+
   colors: {
     primary: {
       value: '#E8430A',
@@ -274,6 +280,7 @@ export const emberTheme: Theme = {
       borderRadius: '16px',
       shadow: '0 1px 3px rgba(0,0,0,0.4)',
       padding: '24px',
+      hoverEffect: 'glow',
     },
     badge: {
       borderRadius: '9999px',
@@ -284,10 +291,14 @@ export const emberTheme: Theme = {
     sidebar: {
       background: '#1A1A16',
       color: '#A8A49A',
-      activeBackground: 'rgba(232, 67, 10, 0.1)',
-      activeColor: '#E8430A',
+      activeBackground: 'transparent',
+      activeColor: '#E8E4DC',
+      activeBorder: '1px solid #3A3A30',
+      activeStyle: 'outlined',
       hoverBackground: '#26261F',
       borderRight: '1px solid #2E2E26',
+      navItemRadius: '10px',
+      navGap: '6px',
     },
     topNav: {
       background: '#1A1A16',

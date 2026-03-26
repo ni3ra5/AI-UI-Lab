@@ -1,7 +1,7 @@
 .topNav {
   position: fixed;
   top: 0;
-  left: var(--layout-sidebar-width);
+  left: var(--active-sidebar-width, var(--layout-sidebar-width));
   right: 0;
   height: var(--layout-top-nav-height);
   background: color-mix(in srgb, var(--top-nav-background) 85%, transparent);
@@ -20,13 +20,46 @@
 .left {
   display: flex;
   align-items: center;
+  flex: 1;
+  max-width: 400px;
 }
 
-.title {
-  font-family: var(--font-heading);
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  color: var(--top-nav-color);
+/* ─── Search ─── */
+.searchWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--spacing-3);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3) var(--spacing-2) var(--spacing-10);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--easing-standard),
+              background var(--duration-fast) var(--easing-standard);
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-muted);
+}
+
+.searchInput:hover {
+  border-color: var(--color-border);
+  background: var(--color-surface);
 }
 
 .right {
@@ -35,8 +68,4 @@
   gap: var(--spacing-3);
 }
 
-@media (max-width: 768px) {
-  .topNav {
-    left: var(--layout-sidebar-collapsed-width);
-  }
-}
+/* Responsive handled by --active-sidebar-width from AppShell */

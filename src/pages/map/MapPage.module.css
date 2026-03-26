@@ -2,6 +2,7 @@
   display: flex;
   height: calc(100vh - var(--layout-top-nav-height));
   margin: calc(-1 * var(--layout-page-padding));
+  overflow: hidden;
 }
 
 .sidebar {
