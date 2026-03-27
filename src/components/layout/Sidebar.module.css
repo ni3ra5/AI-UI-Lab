@@ -66,6 +66,7 @@
   padding: var(--spacing-2) var(--spacing-3);
   border-radius: var(--sidebar-nav-item-radius, var(--radius-md));
   color: var(--sidebar-color);
+  font-family: var(--font-heading);
   font-size: var(--font-size-sm);
   font-weight: 500;
   white-space: nowrap;
