@@ -27,7 +27,8 @@ const typeToVar: Record<Location['type'], string> = {
   Event: '--color-error',
 };
 
-function createClusterIcon(cluster: L.MarkerCluster) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function createClusterIcon(cluster: any) {
   const count = cluster.getChildCount();
   const color = getCSSVar('--color-primary');
   const textColor = getCSSVar('--color-text-inverse');
